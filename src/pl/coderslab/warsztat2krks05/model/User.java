@@ -2,6 +2,11 @@ package pl.coderslab.warsztat2krks05.model;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class User {
     private int id;
     private String username;
@@ -44,5 +49,31 @@ public class User {
 
     public void setPassword(String password) {
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
+    }
+
+    public void saveToDB(Connection conn)
+                throws SQLException {
+        if(this.id==0){
+            final String sql = "INSERT INTO users(username, email, password) " +
+                    "VALUES(?, ?, ?);";
+
+            String[] generatedValues = {"id"};
+
+            PreparedStatement ps = conn.prepareStatement(sql, generatedValues);
+            ps.setString(1, this.username);
+            ps.setString(2, this.email);
+            ps.setString(3, this.password);
+
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if(rs.next()){
+                this.id = rs.getInt(1);
+            }
+            rs.close();
+            ps.close();
+        } else {
+            //TODO update db
+            throw new SQLException("Not implemented!");
+        }
     }
 }
