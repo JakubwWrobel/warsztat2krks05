@@ -11,9 +11,8 @@ public class Main {
     public static void main(String[] args) {
         try {
             Connection conn = DbUtils.getConnection();
-            User u = new User("ala", "ala@mail.pl", "ala");
-            u.saveToDB(conn);
-            System.out.println("id: "+u.getId());
+            User u = User.loadUserById(conn, 1);
+            System.out.println(u.toString());
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
