@@ -1,5 +1,6 @@
 package pl.coderslab.warsztat2krks05;
 
+import pl.coderslab.warsztat2krks05.model.User;
 import pl.coderslab.warsztat2krks05.utils.DbUtils;
 
 import java.sql.Connection;
