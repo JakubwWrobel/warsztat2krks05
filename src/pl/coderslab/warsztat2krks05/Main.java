@@ -9,13 +9,6 @@ import java.sql.SQLException;
 public class Main {
 
     public static void main(String[] args) {
-        try {
-            Connection conn = DbUtils.getConnection();
-            User u = User.loadUserById(conn, 1);
-            System.out.println(u.toString());
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        System.out.println("Please run one of the controllers.");
     }
 }

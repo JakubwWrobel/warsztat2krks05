@@ -10,14 +10,16 @@ import java.util.Scanner;
 public class UserController {
     public static void main(String[] args) {
         System.out.println("Welcome to user administration panel");
-        System.out.println("Select option and hit enter. Options:");
-        System.out.println("1 - Add");
-        System.out.println("2 - Edit");
-        System.out.println("3 - Delete");
-        System.out.println("0 - Quit");
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
         while (true){
+            System.out.println();
+            System.out.println("Select option and hit enter. Options:");
+            System.out.println("1 - Add");
+            System.out.println("2 - Edit");
+            System.out.println("3 - Delete");
+            System.out.println("0 - Quit");
+            String input = scanner.nextLine();
+
             if(input.equals("0")){
                 break;
             } else if (input.equals("1")){
@@ -27,10 +29,8 @@ public class UserController {
             } else if (input.equals("3")) {
                 deleteUser();
             } else {
-                System.out.println("Provide a proper menu option");
+                System.out.println("Provide a proper menu option!");
             }
-            System.out.println("Select option and hit enter. Options:");
-            input = scanner.nextLine();
         }
         System.out.println("Program has ended!");
     }
